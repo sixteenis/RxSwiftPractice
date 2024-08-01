@@ -16,6 +16,20 @@
 		06C154E02C5A7DC7009EA917 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 06C154DF2C5A7DC7009EA917 /* RxCocoa */; };
 		06C154E22C5A7DC7009EA917 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 06C154E12C5A7DC7009EA917 /* RxSwift */; };
 		06C154E62C5A7E0B009EA917 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 06C154E52C5A7E0B009EA917 /* .gitignore */; };
+		06C154EB2C5AA597009EA917 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C154EA2C5AA597009EA917 /* AddVC.swift */; };
+		06C154ED2C5BCCE7009EA917 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C154EC2C5BCCE7009EA917 /* Resource.swift */; };
+		06C155092C5BCD0B009EA917 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C154F82C5BCD0B009EA917 /* SignInViewController.swift */; };
+		06C1550A2C5BCD0B009EA917 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C154F92C5BCD0B009EA917 /* SignInViewModel.swift */; };
+		06C1550B2C5BCD0B009EA917 /* PointButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C154FB2C5BCD0B009EA917 /* PointButton.swift */; };
+		06C1550C2C5BCD0B009EA917 /* SignTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C154FC2C5BCD0B009EA917 /* SignTextField.swift */; };
+		06C1550D2C5BCD0B009EA917 /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C154FE2C5BCD0B009EA917 /* BirthdayViewController.swift */; };
+		06C1550E2C5BCD0B009EA917 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C154FF2C5BCD0B009EA917 /* NicknameViewController.swift */; };
+		06C1550F2C5BCD0B009EA917 /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C155002C5BCD0B009EA917 /* PhoneViewController.swift */; };
+		06C155102C5BCD0B009EA917 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C155022C5BCD0B009EA917 /* DetailViewController.swift */; };
+		06C155112C5BCD0B009EA917 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C155032C5BCD0B009EA917 /* SearchTableViewCell.swift */; };
+		06C155122C5BCD0B009EA917 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C155042C5BCD0B009EA917 /* SearchViewController.swift */; };
+		06C155132C5BCD0B009EA917 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C155062C5BCD0B009EA917 /* PasswordViewController.swift */; };
+		06C155142C5BCD0B009EA917 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C155072C5BCD0B009EA917 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +41,20 @@
 		06C154D32C5A7D7F009EA917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06C154D52C5A7D7F009EA917 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06C154E52C5A7E0B009EA917 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		06C154EA2C5AA597009EA917 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
+		06C154EC2C5BCCE7009EA917 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		06C154F82C5BCD0B009EA917 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		06C154F92C5BCD0B009EA917 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		06C154FB2C5BCD0B009EA917 /* PointButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointButton.swift; sourceTree = "<group>"; };
+		06C154FC2C5BCD0B009EA917 /* SignTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignTextField.swift; sourceTree = "<group>"; };
+		06C154FE2C5BCD0B009EA917 /* BirthdayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
+		06C154FF2C5BCD0B009EA917 /* NicknameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
+		06C155002C5BCD0B009EA917 /* PhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
+		06C155022C5BCD0B009EA917 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		06C155032C5BCD0B009EA917 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		06C155042C5BCD0B009EA917 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		06C155062C5BCD0B009EA917 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		06C155072C5BCD0B009EA917 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,14 +91,68 @@
 		06C154C62C5A7D7D009EA917 /* RxSwiftPractice */ = {
 			isa = PBXGroup;
 			children = (
+				06C154FD2C5BCD0B009EA917 /* CustomView */,
+				06C155052C5BCD0B009EA917 /* Search */,
+				06C154FA2C5BCD0B009EA917 /* SignIn */,
+				06C155082C5BCD0B009EA917 /* SignUp */,
+				06C155012C5BCD0B009EA917 /* SignUpOptional */,
 				06C154C72C5A7D7D009EA917 /* AppDelegate.swift */,
 				06C154C92C5A7D7D009EA917 /* SceneDelegate.swift */,
 				06C154CB2C5A7D7D009EA917 /* ViewController.swift */,
 				06C154D02C5A7D7F009EA917 /* Assets.xcassets */,
 				06C154D22C5A7D7F009EA917 /* LaunchScreen.storyboard */,
 				06C154D52C5A7D7F009EA917 /* Info.plist */,
+				06C154EA2C5AA597009EA917 /* AddVC.swift */,
+				06C154EC2C5BCCE7009EA917 /* Resource.swift */,
 			);
 			path = RxSwiftPractice;
+			sourceTree = "<group>";
+		};
+		06C154FA2C5BCD0B009EA917 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				06C154F82C5BCD0B009EA917 /* SignInViewController.swift */,
+				06C154F92C5BCD0B009EA917 /* SignInViewModel.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		06C154FD2C5BCD0B009EA917 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				06C154FB2C5BCD0B009EA917 /* PointButton.swift */,
+				06C154FC2C5BCD0B009EA917 /* SignTextField.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		06C155012C5BCD0B009EA917 /* SignUpOptional */ = {
+			isa = PBXGroup;
+			children = (
+				06C154FE2C5BCD0B009EA917 /* BirthdayViewController.swift */,
+				06C154FF2C5BCD0B009EA917 /* NicknameViewController.swift */,
+				06C155002C5BCD0B009EA917 /* PhoneViewController.swift */,
+			);
+			path = SignUpOptional;
+			sourceTree = "<group>";
+		};
+		06C155052C5BCD0B009EA917 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				06C155022C5BCD0B009EA917 /* DetailViewController.swift */,
+				06C155032C5BCD0B009EA917 /* SearchTableViewCell.swift */,
+				06C155042C5BCD0B009EA917 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		06C155082C5BCD0B009EA917 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				06C155062C5BCD0B009EA917 /* PasswordViewController.swift */,
+				06C155072C5BCD0B009EA917 /* SignUpViewController.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,9 +235,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06C155122C5BCD0B009EA917 /* SearchViewController.swift in Sources */,
+				06C155102C5BCD0B009EA917 /* DetailViewController.swift in Sources */,
+				06C154EB2C5AA597009EA917 /* AddVC.swift in Sources */,
+				06C1550A2C5BCD0B009EA917 /* SignInViewModel.swift in Sources */,
+				06C1550B2C5BCD0B009EA917 /* PointButton.swift in Sources */,
+				06C155142C5BCD0B009EA917 /* SignUpViewController.swift in Sources */,
 				06C154CC2C5A7D7D009EA917 /* ViewController.swift in Sources */,
+				06C1550C2C5BCD0B009EA917 /* SignTextField.swift in Sources */,
+				06C1550D2C5BCD0B009EA917 /* BirthdayViewController.swift in Sources */,
+				06C1550E2C5BCD0B009EA917 /* NicknameViewController.swift in Sources */,
+				06C155132C5BCD0B009EA917 /* PasswordViewController.swift in Sources */,
+				06C155092C5BCD0B009EA917 /* SignInViewController.swift in Sources */,
 				06C154C82C5A7D7D009EA917 /* AppDelegate.swift in Sources */,
+				06C1550F2C5BCD0B009EA917 /* PhoneViewController.swift in Sources */,
+				06C154ED2C5BCCE7009EA917 /* Resource.swift in Sources */,
 				06C154CA2C5A7D7D009EA917 /* SceneDelegate.swift in Sources */,
+				06C155112C5BCD0B009EA917 /* SearchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
