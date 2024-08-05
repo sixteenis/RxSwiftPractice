@@ -14,53 +14,41 @@ enum Errors: Error {
     case invalidPassword
 }
 
-class SignUpViewController: UIViewController {
-    let emailTextField = SignTextField(placeholderText: "이메일을 입력해주세요")
-    let validationButton = UIButton()
-    let nextButton = PointButton(title: "다음")
-    let emailData = PublishSubject<String>()
-    let basicColor = BehaviorSubject(value: UIColor.systemGreen)
-    let disposeBag = DisposeBag()
+final class SignUpViewController: UIViewController {
+    private let emailTextField = SignTextField(placeholderText: "이메일을 입력해주세요")
+    private let validationButton = UIButton()
+    private let nextButton = PointButton(title: "다음")
+    
+    private let emailData = PublishSubject<String>()
+    private let basicColor = BehaviorSubject(value: UIColor.systemGreen)
+    
+    private let disposeBag = DisposeBag()
+    private let vm = SignUpViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = Color.white
-        
         configureLayout()
         configure()
-    
         bind()
-        textpublishSubject()
-    }
-    func textpublishSubject() {
-        let example = PublishSubject<String>()
-        example.bind(with: self) { owner, value in
-            print(value)
-        }.disposed(by: disposeBag)
-        example.onNext("냠냠")
     }
     func bind() {
-        let validation = emailTextField.rx.text
-            .orEmpty
-            .map { $0.count >= 4 }
-        validation.bind(to: nextButton.rx.isEnabled)
+        let input = SignUpViewModel.Input(emailText: emailTextField.rx.text.orEmpty, tap: nextButton.rx.tap)
+        let output = vm.transform(input)
+        
+        output.textCountBool
+            .bind(to: nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
-        validation.bind(with: self) { owner, value in
-            let color: UIColor = value ? .systemGreen : .systemRed
+        
+        output.textCountBool.bind(with: self) { owner, bool in
+            let color = bool ? UIColor.systemGreen : UIColor.systemRed
             owner.nextButton.backgroundColor = color
-            owner.validationButton.isEnabled = !value
+            owner.emailTextField.textColor = color
+            owner.emailTextField.tintColor = color
+            owner.validationButton.isEnabled = !bool
         }.disposed(by: disposeBag)
         
-        emailData.bind(to: emailTextField.rx.text)
-            .disposed(by: disposeBag)
-        validationButton.rx.tap.bind(with: self) { owner, _ in
-            owner.emailData.onNext("b@b.com")
-        }.disposed(by: disposeBag)
-        basicColor.bind(to: nextButton.rx.backgroundColor, emailTextField.rx.textColor, emailTextField.rx.tintColor)
-            .disposed(by: disposeBag)
-        basicColor.map {$0.cgColor}.bind(to: emailTextField.layer.rx.borderColor)
-            .disposed(by: disposeBag)
-        nextButton.rx.tap
+        output.tap
             .bind(with: self) { owner, _ in
                 owner.navigationController?.pushViewController(PasswordViewController(), animated: true)
             }.disposed(by: disposeBag)
