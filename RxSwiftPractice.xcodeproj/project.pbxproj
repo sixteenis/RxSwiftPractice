@@ -37,6 +37,8 @@
 		06DCC81D2C60B54E0049283B /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCC81C2C60B54E0049283B /* SignUpViewModel.swift */; };
 		06DCC81F2C60C11C0049283B /* BirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCC81E2C60C11C0049283B /* BirthdayViewModel.swift */; };
 		06DCC8212C60C13C0049283B /* BirthdayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCC8202C60C13C0049283B /* BirthdayModel.swift */; };
+		06DCC8242C60D7CB0049283B /* ShoppingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCC8232C60D7CB0049283B /* ShoppingViewModel.swift */; };
+		06DCC8262C60D7E80049283B /* ShoppingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCC8252C60D7E80049283B /* ShoppingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		06DCC81C2C60B54E0049283B /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		06DCC81E2C60C11C0049283B /* BirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewModel.swift; sourceTree = "<group>"; };
 		06DCC8202C60C13C0049283B /* BirthdayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayModel.swift; sourceTree = "<group>"; };
+		06DCC8232C60D7CB0049283B /* ShoppingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewModel.swift; sourceTree = "<group>"; };
+		06DCC8252C60D7E80049283B /* ShoppingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,7 @@
 		06C154C62C5A7D7D009EA917 /* RxSwiftPractice */ = {
 			isa = PBXGroup;
 			children = (
+				06DCC8222C60D7B60049283B /* Shopping */,
 				06C154FD2C5BCD0B009EA917 /* CustomView */,
 				06C155052C5BCD0B009EA917 /* Search */,
 				06C154FA2C5BCD0B009EA917 /* SignIn */,
@@ -118,8 +123,6 @@
 				06C154D52C5A7D7F009EA917 /* Info.plist */,
 				06C154EA2C5AA597009EA917 /* AddVC.swift */,
 				06C154EC2C5BCCE7009EA917 /* Resource.swift */,
-				06DCC80F2C5F834D0049283B /* ShoppingListVC.swift */,
-				06DCC8142C5F89DF0049283B /* ShoppingTableCell.swift */,
 			);
 			path = RxSwiftPractice;
 			sourceTree = "<group>";
@@ -173,6 +176,17 @@
 				06DCC81C2C60B54E0049283B /* SignUpViewModel.swift */,
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		06DCC8222C60D7B60049283B /* Shopping */ = {
+			isa = PBXGroup;
+			children = (
+				06DCC8252C60D7E80049283B /* ShoppingModel.swift */,
+				06DCC80F2C5F834D0049283B /* ShoppingListVC.swift */,
+				06DCC8142C5F89DF0049283B /* ShoppingTableCell.swift */,
+				06DCC8232C60D7CB0049283B /* ShoppingViewModel.swift */,
+			);
+			path = Shopping;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,7 +292,9 @@
 				06DCC81F2C60C11C0049283B /* BirthdayViewModel.swift in Sources */,
 				06C1550F2C5BCD0B009EA917 /* PhoneViewController.swift in Sources */,
 				06C154ED2C5BCCE7009EA917 /* Resource.swift in Sources */,
+				06DCC8262C60D7E80049283B /* ShoppingModel.swift in Sources */,
 				06C154CA2C5A7D7D009EA917 /* SceneDelegate.swift in Sources */,
+				06DCC8242C60D7CB0049283B /* ShoppingViewModel.swift in Sources */,
 				06C155112C5BCD0B009EA917 /* SearchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

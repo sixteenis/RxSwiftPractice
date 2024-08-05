@@ -10,11 +10,6 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import Then
-struct ShoppingModel {
-    var check: Bool
-    var title: String
-    var likes: Bool
-}
 
 class ShoppingListVC: UIViewController {
     let searchTextFiled = UITextField().then {
@@ -28,8 +23,8 @@ class ShoppingListVC: UIViewController {
         $0.backgroundColor = .darkGray
     }
     let tableView = UITableView()
-    var shoppingData = [ShoppingModel(check: false, title: "그립톡 구매", likes: true), ShoppingModel(check: true, title: "사이다 구매", likes: false), ShoppingModel(check: false, title: "아이패드 케이스 최저가 알아보기", likes: false), ShoppingModel(check: true, title: "양말", likes: true)]
-    lazy var shoppingList = BehaviorRelay(value: shoppingData)
+    
+    let vm = ShoppingViewModel()
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -39,47 +34,38 @@ class ShoppingListVC: UIViewController {
         bind()
     }
     func bind() {
-        shoppingList
+        let checkButtonTap = PublishRelay<Int>()
+        let likeButtonTap = PublishRelay<Int>()
+        
+        let input = ShoppingViewModel.Input(addItem: addButton.rx.tap.withLatestFrom(searchTextFiled.rx.text.orEmpty), checkButtonTap: checkButtonTap, likeButtonTap: likeButtonTap)
+        let output = vm.transform(input)
+        
+        output.shoppingList
             .bind(to: tableView.rx.items(cellIdentifier: ShoppingTableCell.identifier, cellType: ShoppingTableCell.self)) { (row, element, cell) in
                 cell.setUpdata(data: element)
                 cell.checkButton.rx.tap
-                    .bind(with: self) { owner, bool in
-                        owner.shoppingData[row].check.toggle()
-                        owner.shoppingList.accept(owner.shoppingData)
-                    }.disposed(by: cell.disposeBag)
+                    .map {row}
+                    .bind(to: checkButtonTap)
+                    .disposed(by: cell.disposeBag)
                 cell.likeButton.rx.tap
-                    .bind(with: self) { owner, bool in
-                        owner.shoppingData[row].likes.toggle()
-                        owner.shoppingList.accept(owner.shoppingData)
-                    }.disposed(by: cell.disposeBag)
+                    .map {row}
+                    .bind(to: likeButtonTap)
+                    .disposed(by: cell.disposeBag)
             }.disposed(by: disposeBag)
-        searchTextFiled.rx.text.orEmpty
-            .bind(with: self) { owner, text in
-                print(text)
-            }.disposed(by: disposeBag)
-        addButton.rx.tap
-            .withLatestFrom(searchTextFiled.rx.text.orEmpty)
-            .bind(with: self) { owner, text in
-                print("???")
-                print(text)
-                let list = ShoppingModel(check: false, title: text, likes: false)
-                owner.shoppingData.insert(list, at: 0)
-                owner.shoppingList.accept(owner.shoppingData)
-                owner.searchTextFiled.text = ""
-            }.disposed(by: disposeBag)
+        
     }
     func configureLayout() {
         view.backgroundColor = .white
         view.addSubview(searchTextFiled)
-        searchTextFiled.addSubview(addButton)
+        view.addSubview(addButton)
         view.addSubview(tableView)
         searchTextFiled.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(70)
         }
         addButton.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(10)
+            make.centerY.equalTo(searchTextFiled)
+            make.trailing.equalTo(searchTextFiled).inset(10)
             make.size.equalTo(40)
         }
         tableView.snp.makeConstraints { make in
