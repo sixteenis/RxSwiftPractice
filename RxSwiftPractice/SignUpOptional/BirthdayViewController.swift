@@ -10,9 +10,9 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class BirthdayViewController: UIViewController {
-    let disposeBag = DisposeBag()
-    let birthDayPicker: UIDatePicker = {
+final class BirthdayViewController: UIViewController {
+    private let disposeBag = DisposeBag()
+    private let birthDayPicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.datePickerMode = .date
         picker.preferredDatePickerStyle = .wheels
@@ -20,20 +20,20 @@ class BirthdayViewController: UIViewController {
         picker.maximumDate = Date()
         return picker
     }()
-    let infoLabel: UILabel = {
+    private let infoLabel: UILabel = {
         let label = UILabel()
         label.textColor = Color.black
         label.text = "만 17세 이상만 가입 가능합니다."
         return label
     }()
-    let containerStackView: UIStackView = {
+    private let containerStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .equalSpacing
         stack.spacing = 10
         return stack
     }()
-    let yearLabel: UILabel = {
+    private let yearLabel: UILabel = {
         let label = UILabel()
         label.text = "2023년"
         label.textColor = Color.black
@@ -42,7 +42,7 @@ class BirthdayViewController: UIViewController {
         }
         return label
     }()
-    let monthLabel: UILabel = {
+    private let monthLabel: UILabel = {
         let label = UILabel()
         label.text = "33월"
         label.textColor = Color.black
@@ -51,7 +51,7 @@ class BirthdayViewController: UIViewController {
         }
         return label
     }()
-    let dayLabel: UILabel = {
+    private let dayLabel: UILabel = {
         let label = UILabel()
         label.text = "99일"
         label.textColor = Color.black
@@ -60,74 +60,35 @@ class BirthdayViewController: UIViewController {
         }
         return label
     }()
+    private let nextButton = PointButton(title: "가입하기")
     
-    let nextButton = PointButton(title: "가입하기")
-    let birthday = Observable.just(Date.now)//Date.now
-    let year = BehaviorRelay(value: 0)
-    let month = BehaviorRelay(value: 0)
-    let day = BehaviorRelay(value: 0)
+    private let vm = BirthdayViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = Color.white
-        birthday
-            .bind(with: self) { owner, date in
-                let component = Calendar.current.dateComponents([.year, .month, .day], from: date)
-                owner.year.accept(component.year!)
-                owner.month.accept(component.month!)
-                owner.day.accept(component.day!)
-            }
-            .disposed(by: disposeBag)
-        
         configureLayout()
-        
         bind()
     }
-    
-    
-    
-    private func isAdult(date: Date) -> Bool {
-            let calendar = Calendar.current
-            let now = Date()
-            
-            guard let age = calendar.dateComponents([.year], from: date, to: now).year else {
-                return false
-            }
-            
-            return age >= 18
-        }
-    func bind() {
-        birthDayPicker.rx.date
-            .bind(with: self) { owner, date in
-                let component = Calendar.current.dateComponents([.day,.month,.year], from: date)
-                owner.year.accept(component.year!)
-                owner.month.accept(component.month!)
-                owner.day.accept(component.day!)
-                let bool = owner.isAdult(date: date)
-                owner.nextButton.isEnabled = bool //참이면 18세 이상
-                owner.infoLabel.text = bool ? "가입 가능 하십니다." : "만 17세 이상만 가입 가능합니다."
-                owner.infoLabel.textColor = bool ? .systemBlue : .systemRed
+    private func bind() {
+        let input = BirthdayViewModel.Input(pickerDate: birthDayPicker.rx.date, tap: nextButton.rx.tap)
+        let output = vm.transform(input)
+        output.date
+            .bind(with: self) { owner, model in
+                owner.yearLabel.text = "\(model.year)년"
+                owner.monthLabel.text = "\(model.month)월"
+                owner.dayLabel.text = "\(model.day)일"
+                let isAdult = model.getIsAdult()
+                owner.infoLabel.text = isAdult ? "가입 가능 하십니다." : "만 17세 이상만 가입 가능합니다."
+                owner.infoLabel.textColor = isAdult ? .systemBlue : .systemRed
+                owner.nextButton.isEnabled = isAdult
             }.disposed(by: disposeBag)
-        year
-            .map {"\($0)년"}
-            .bind(to: yearLabel.rx.text)
-            .disposed(by: disposeBag)
-        month
-            .map { "\($0)월"}
-            .bind(to: monthLabel.rx.text)
-            .disposed(by: disposeBag)
-        day
-            .map { "\($0)일"}
-            .bind(to: dayLabel.rx.text)
-            .disposed(by: disposeBag)
         
-        nextButton.rx.tap
+        output.tap
             .bind(with: self) { owner, _ in
                 owner.navigationController?.pushViewController(SearchViewController(), animated: true)
             }.disposed(by: disposeBag)
-        
-        
     }
     
     func configureLayout() {

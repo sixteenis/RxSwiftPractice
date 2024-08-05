@@ -35,6 +35,8 @@
 		06DCC8152C5F89DF0049283B /* ShoppingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCC8142C5F89DF0049283B /* ShoppingTableCell.swift */; };
 		06DCC81B2C60AA330049283B /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCC81A2C60AA330049283B /* PasswordViewModel.swift */; };
 		06DCC81D2C60B54E0049283B /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCC81C2C60B54E0049283B /* SignUpViewModel.swift */; };
+		06DCC81F2C60C11C0049283B /* BirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCC81E2C60C11C0049283B /* BirthdayViewModel.swift */; };
+		06DCC8212C60C13C0049283B /* BirthdayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCC8202C60C13C0049283B /* BirthdayModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		06DCC8142C5F89DF0049283B /* ShoppingTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableCell.swift; sourceTree = "<group>"; };
 		06DCC81A2C60AA330049283B /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 		06DCC81C2C60B54E0049283B /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		06DCC81E2C60C11C0049283B /* BirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewModel.swift; sourceTree = "<group>"; };
+		06DCC8202C60C13C0049283B /* BirthdayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				06C154FE2C5BCD0B009EA917 /* BirthdayViewController.swift */,
+				06DCC81E2C60C11C0049283B /* BirthdayViewModel.swift */,
+				06DCC8202C60C13C0049283B /* BirthdayModel.swift */,
 				06C154FF2C5BCD0B009EA917 /* NicknameViewController.swift */,
 				06C155002C5BCD0B009EA917 /* PhoneViewController.swift */,
 			);
@@ -258,6 +264,7 @@
 				06C1550A2C5BCD0B009EA917 /* SignInViewModel.swift in Sources */,
 				06C1550B2C5BCD0B009EA917 /* PointButton.swift in Sources */,
 				06C155142C5BCD0B009EA917 /* SignUpViewController.swift in Sources */,
+				06DCC8212C60C13C0049283B /* BirthdayModel.swift in Sources */,
 				06C154CC2C5A7D7D009EA917 /* ViewController.swift in Sources */,
 				06C1550C2C5BCD0B009EA917 /* SignTextField.swift in Sources */,
 				06DCC81B2C60AA330049283B /* PasswordViewModel.swift in Sources */,
@@ -268,6 +275,7 @@
 				06C155132C5BCD0B009EA917 /* PasswordViewController.swift in Sources */,
 				06C155092C5BCD0B009EA917 /* SignInViewController.swift in Sources */,
 				06C154C82C5A7D7D009EA917 /* AppDelegate.swift in Sources */,
+				06DCC81F2C60C11C0049283B /* BirthdayViewModel.swift in Sources */,
 				06C1550F2C5BCD0B009EA917 /* PhoneViewController.swift in Sources */,
 				06C154ED2C5BCCE7009EA917 /* Resource.swift in Sources */,
 				06C154CA2C5A7D7D009EA917 /* SceneDelegate.swift in Sources */,
