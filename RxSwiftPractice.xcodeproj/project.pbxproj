@@ -33,6 +33,7 @@
 		06DCC8102C5F834D0049283B /* ShoppingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCC80F2C5F834D0049283B /* ShoppingListVC.swift */; };
 		06DCC8132C5F839E0049283B /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 06DCC8122C5F839E0049283B /* Then */; };
 		06DCC8152C5F89DF0049283B /* ShoppingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCC8142C5F89DF0049283B /* ShoppingTableCell.swift */; };
+		06DCC81B2C60AA330049283B /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCC81A2C60AA330049283B /* PasswordViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		06C155072C5BCD0B009EA917 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		06DCC80F2C5F834D0049283B /* ShoppingListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListVC.swift; sourceTree = "<group>"; };
 		06DCC8142C5F89DF0049283B /* ShoppingTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableCell.swift; sourceTree = "<group>"; };
+		06DCC81A2C60AA330049283B /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				06C155062C5BCD0B009EA917 /* PasswordViewController.swift */,
+				06DCC81A2C60AA330049283B /* PasswordViewModel.swift */,
 				06C155072C5BCD0B009EA917 /* SignUpViewController.swift */,
 			);
 			path = SignUp;
@@ -254,6 +257,7 @@
 				06C155142C5BCD0B009EA917 /* SignUpViewController.swift in Sources */,
 				06C154CC2C5A7D7D009EA917 /* ViewController.swift in Sources */,
 				06C1550C2C5BCD0B009EA917 /* SignTextField.swift in Sources */,
+				06DCC81B2C60AA330049283B /* PasswordViewModel.swift in Sources */,
 				06DCC8152C5F89DF0049283B /* ShoppingTableCell.swift in Sources */,
 				06C1550D2C5BCD0B009EA917 /* BirthdayViewController.swift in Sources */,
 				06C1550E2C5BCD0B009EA917 /* NicknameViewController.swift in Sources */,
