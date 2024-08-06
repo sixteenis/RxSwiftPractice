@@ -36,11 +36,11 @@ class ShoppingListVC: UIViewController {
     func bind() {
         let checkButtonTap = PublishRelay<Int>()
         let likeButtonTap = PublishRelay<Int>()
-        
-        let input = ShoppingViewModel.Input(addItem: addButton.rx.tap.withLatestFrom(searchTextFiled.rx.text.orEmpty), checkButtonTap: checkButtonTap, likeButtonTap: likeButtonTap)
+        //셀 뷰모델
+        let input = ShoppingViewModel.Input(addItem: addButton.rx.tap.withLatestFrom(searchTextFiled.rx.text.orEmpty), lookText: searchTextFiled.rx.text.orEmpty.distinctUntilChanged(), checkButtonTap: checkButtonTap, likeButtonTap: likeButtonTap)
         let output = vm.transform(input)
         
-        output.shoppingList
+        output.shoppingList //결과 유니캐스팅 멀티캐스팅?
             .bind(to: tableView.rx.items(cellIdentifier: ShoppingTableCell.identifier, cellType: ShoppingTableCell.self)) { (row, element, cell) in
                 cell.setUpdata(data: element)
                 cell.checkButton.rx.tap
