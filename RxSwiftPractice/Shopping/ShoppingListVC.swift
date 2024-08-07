@@ -23,21 +23,23 @@ class ShoppingListVC: UIViewController {
         $0.backgroundColor = .darkGray
     }
     let tableView = UITableView()
-    
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     let vm = ShoppingViewModel()
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(ShoppingTableCell.self, forCellReuseIdentifier: ShoppingTableCell.identifier)
+        collectionView.register(RecentCollectionViewCell.self, forCellWithReuseIdentifier: RecentCollectionViewCell.identifier)
         configureLayout()
         bind()
     }
     func bind() {
         let checkButtonTap = PublishRelay<UUID>()
         let likeButtonTap = PublishRelay<UUID>()
+        let recentText = PublishRelay<String>()
         //셀 뷰모델
-        let input = ShoppingViewModel.Input(addItem: addButton.rx.tap.withLatestFrom(searchTextFiled.rx.text.orEmpty), lookText: searchTextFiled.rx.text.orEmpty.distinctUntilChanged(), checkButtonTap: checkButtonTap, likeButtonTap: likeButtonTap)
+        let input = ShoppingViewModel.Input(addItem: addButton.rx.tap.withLatestFrom(searchTextFiled.rx.text.orEmpty), lookText: searchTextFiled.rx.text.orEmpty.distinctUntilChanged(), checkButtonTap: checkButtonTap, likeButtonTap: likeButtonTap, recentText: recentText)
         let output = vm.transform(input)
         
         output.shoppingList //결과 유니캐스팅 멀티캐스팅?
@@ -52,10 +54,14 @@ class ShoppingListVC: UIViewController {
                     .bind(to: likeButtonTap)
                     .disposed(by: cell.disposeBag)
             }.disposed(by: disposeBag)
-//        tableView.rx.
-//        tableView.rx.modelSelected(ShoppingModel.self)
-//            .map {$0.id}
-//            .bind(to: <#T##UUID...##UUID#>)
+        output.recentList
+            .bind(to: collectionView.rx.items(cellIdentifier: RecentCollectionViewCell.identifier, cellType: RecentCollectionViewCell.self)) { (row, element, cell) in
+                cell.label.text = element
+            }.disposed(by: disposeBag)
+        collectionView.rx.modelSelected(String.self)
+            .bind(with: self) { owner, value in
+                recentText.accept(value)
+            }.disposed(by: disposeBag)
         
     }
     func configureLayout() {
@@ -63,8 +69,11 @@ class ShoppingListVC: UIViewController {
         view.addSubview(searchTextFiled)
         view.addSubview(addButton)
         view.addSubview(tableView)
+        view.addSubview(collectionView)
+        collectionView.showsHorizontalScrollIndicator = false
         searchTextFiled.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(15)
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(70)
         }
         addButton.snp.makeConstraints { make in
@@ -72,12 +81,26 @@ class ShoppingListVC: UIViewController {
             make.trailing.equalTo(searchTextFiled).inset(10)
             make.size.equalTo(40)
         }
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(searchTextFiled.snp.bottom).offset(5)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(50)
+        }
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(searchTextFiled.snp.bottom).offset(15)
+            make.top.equalTo(collectionView.snp.bottom).offset(5)
             make.horizontalEdges.equalToSuperview().inset(15)
             make.bottom.equalToSuperview()
         }
         
     }
     
+}
+
+extension ShoppingListVC {
+    static func layout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 120, height: 40)
+        layout.scrollDirection = .horizontal
+        return layout
+    }
 }

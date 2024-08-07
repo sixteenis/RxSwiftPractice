@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06685A1F2C63619400E0475D /* RecentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06685A1E2C63619400E0475D /* RecentCollectionViewCell.swift */; };
 		06C154C82C5A7D7D009EA917 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C154C72C5A7D7D009EA917 /* AppDelegate.swift */; };
 		06C154CA2C5A7D7D009EA917 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C154C92C5A7D7D009EA917 /* SceneDelegate.swift */; };
 		06C154CC2C5A7D7D009EA917 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C154CB2C5A7D7D009EA917 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06685A1E2C63619400E0475D /* RecentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCollectionViewCell.swift; sourceTree = "<group>"; };
 		06C154C42C5A7D7D009EA917 /* RxSwiftPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C154C72C5A7D7D009EA917 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06C154C92C5A7D7D009EA917 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -183,8 +185,9 @@
 			children = (
 				06DCC8252C60D7E80049283B /* ShoppingModel.swift */,
 				06DCC80F2C5F834D0049283B /* ShoppingListVC.swift */,
-				06DCC8142C5F89DF0049283B /* ShoppingTableCell.swift */,
 				06DCC8232C60D7CB0049283B /* ShoppingViewModel.swift */,
+				06DCC8142C5F89DF0049283B /* ShoppingTableCell.swift */,
+				06685A1E2C63619400E0475D /* RecentCollectionViewCell.swift */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				06C1550D2C5BCD0B009EA917 /* BirthdayViewController.swift in Sources */,
 				06C1550E2C5BCD0B009EA917 /* NicknameViewController.swift in Sources */,
 				06DCC81D2C60B54E0049283B /* SignUpViewModel.swift in Sources */,
+				06685A1F2C63619400E0475D /* RecentCollectionViewCell.swift in Sources */,
 				06C155132C5BCD0B009EA917 /* PasswordViewController.swift in Sources */,
 				06C155092C5BCD0B009EA917 /* SignInViewController.swift in Sources */,
 				06C154C82C5A7D7D009EA917 /* AppDelegate.swift in Sources */,
