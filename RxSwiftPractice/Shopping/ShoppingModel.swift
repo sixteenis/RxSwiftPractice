@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct ShoppingModel {
+struct ShoppingModel: Identifiable {
+    let id = UUID()
     var check: Bool
     var title: String
     var likes: Bool

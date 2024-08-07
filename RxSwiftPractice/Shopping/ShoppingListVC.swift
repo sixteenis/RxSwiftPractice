@@ -34,8 +34,8 @@ class ShoppingListVC: UIViewController {
         bind()
     }
     func bind() {
-        let checkButtonTap = PublishRelay<Int>()
-        let likeButtonTap = PublishRelay<Int>()
+        let checkButtonTap = PublishRelay<UUID>()
+        let likeButtonTap = PublishRelay<UUID>()
         //셀 뷰모델
         let input = ShoppingViewModel.Input(addItem: addButton.rx.tap.withLatestFrom(searchTextFiled.rx.text.orEmpty), lookText: searchTextFiled.rx.text.orEmpty.distinctUntilChanged(), checkButtonTap: checkButtonTap, likeButtonTap: likeButtonTap)
         let output = vm.transform(input)
@@ -44,14 +44,18 @@ class ShoppingListVC: UIViewController {
             .bind(to: tableView.rx.items(cellIdentifier: ShoppingTableCell.identifier, cellType: ShoppingTableCell.self)) { (row, element, cell) in
                 cell.setUpdata(data: element)
                 cell.checkButton.rx.tap
-                    .map {row}
+                    .map{element.id}
                     .bind(to: checkButtonTap)
                     .disposed(by: cell.disposeBag)
                 cell.likeButton.rx.tap
-                    .map {row}
+                    .map{element.id}
                     .bind(to: likeButtonTap)
                     .disposed(by: cell.disposeBag)
             }.disposed(by: disposeBag)
+//        tableView.rx.
+//        tableView.rx.modelSelected(ShoppingModel.self)
+//            .map {$0.id}
+//            .bind(to: <#T##UUID...##UUID#>)
         
     }
     func configureLayout() {

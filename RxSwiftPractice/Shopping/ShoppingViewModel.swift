@@ -12,12 +12,11 @@ import RxCocoa
 class ShoppingViewModel {
     let disposeBag = DisposeBag()
     var shoppingData = [ShoppingModel(check: false, title: "그립톡 구매", likes: true), ShoppingModel(check: true, title: "사이다 구매", likes: false), ShoppingModel(check: false, title: "아이패드 케이스 최저가 알아보기", likes: false), ShoppingModel(check: true, title: "양말", likes: true)]
-    
     struct Input {
         let addItem: Observable<ControlProperty<String>.Element>
         let lookText: Observable<ControlProperty<String>.Element>
-        let checkButtonTap: PublishRelay<Int>
-        let likeButtonTap: PublishRelay<Int>
+        let checkButtonTap: PublishRelay<UUID>
+        let likeButtonTap: PublishRelay<UUID>
         
     }
     struct Output {
@@ -26,14 +25,17 @@ class ShoppingViewModel {
     }
     func transform(_ input: Input) -> Output {
         let shoppingList = BehaviorRelay<[ShoppingModel]>(value: shoppingData)
+        let filterText = BehaviorRelay(value: "")
+        
         input.addItem
             .bind(with: self) { owner, text in
                 let item = ShoppingModel(check: false, title: text, likes: false)
                 self.shoppingData.insert(item, at: 0)
-                shoppingList.accept(owner.shoppingData)
+                shoppingList.accept(owner.shoppingData.filter { $0.title.contains(filterText.value)})
             }.disposed(by: disposeBag)
         input.lookText
             .bind(with: self) { owner, filter in
+                filterText.accept(filter)
                 if filter.isEmpty {
                     shoppingList.accept(owner.shoppingData)
                 }else{
@@ -41,15 +43,36 @@ class ShoppingViewModel {
                     shoppingList.accept(result)
                 }
             }.disposed(by: disposeBag)
+        
+        
         input.checkButtonTap
-            .bind(with: self) { owner, index in
-                owner.shoppingData[index].check.toggle()
-                shoppingList.accept(owner.shoppingData)
+            .bind(with: self) { owner, id in
+                for i in 0...owner.shoppingData.count-1 {
+                    if owner.shoppingData[i].id == id {
+                        owner.shoppingData[i].check.toggle()
+                        break
+                    }
+                }
+                if filterText.value != ""{
+                    shoppingList.accept(owner.shoppingData.filter { $0.title.contains(filterText.value)})
+                }else{
+                    shoppingList.accept(owner.shoppingData)
+                }
             }.disposed(by: disposeBag)
+        
         input.likeButtonTap
-            .bind(with: self) { owner, index in
-                owner.shoppingData[index].likes.toggle()
-                shoppingList.accept(owner.shoppingData)
+            .bind(with: self) { owner, id in
+                for i in 0...owner.shoppingData.count-1 {
+                    if owner.shoppingData[i].id == id {
+                        owner.shoppingData[i].likes.toggle()
+                        break
+                    }
+                }
+                if filterText.value != ""{
+                    shoppingList.accept(owner.shoppingData.filter { $0.title.contains(filterText.value)})
+                }else{
+                    shoppingList.accept(owner.shoppingData)
+                }
             }.disposed(by: disposeBag)
         
         return Output(shoppingList: shoppingList)
